@@ -1,0 +1,232 @@
+<html>
+<head>
+	
+<title>期末作業</title>
+<style>
+	*{
+		margin:0;
+		padding:0;
+		margin:3px 3 0px 0;
+	}
+	.login{
+		width:100%;
+		text-align:Right;/*向右對齊*/
+		
+	}
+
+	dialog{
+		border: none;
+		box-shadow: 0 2px 6px #ccc;/*區塊陰影*/
+		border-radius: 10px;
+	}
+	
+
+	.logo{
+		width:100%;
+		text-align:center;
+		margin:-90px 0 30px 0;
+	}
+	.logo h4{
+		cursor:pointer;/**/
+		font-size:30px;
+		letter-spacing:2px;/*兼具*/
+		margin:-70px 0 0px 0;
+
+	}
+	.logo h4:hover{
+		color:#FF7575;
+	}
+	.logo p{
+		font-size:16px;
+		
+	}
+	.nav{
+		widtha:100%;
+		border-top:2px solid #F0F0F0;
+		border-bottom:2px solid #F0F0F0;
+		}
+	.nav>ul{
+		display:flex;
+		justify-content: center;
+		padding:20px 0;
+	}
+	.nav>ul>li{
+		position:relative;
+		list-style:none;
+		margin:0 20px;
+	}
+	.nav ul li a{
+		color:#333;
+		text-decoration:none;
+	}
+	.nav ul li a:hover{
+		color:#BB5E00;
+	}
+	.nav ul li ul{
+		display:none;
+		position:absolute;
+		top:30px;
+		left:-15px;
+		background:#ffffff;
+		padding:10px;
+		width:120px;
+	}
+	.nav ul li li{
+		margin:5px 0;
+		list-style:none;
+	}
+	.nav>ul>li:hover ul{
+		display:block;
+	}
+	.banner{
+		width:820;
+		margin:20px auto;
+	}
+	.banner img{
+		width:100%;
+	}
+	.goto{
+		width:100%;
+		text-align:center;
+	}
+	.more{
+		width:100%;
+		text-align:right;
+	}
+	.about{
+		
+		width:820px;
+		margin:auto;
+	}
+	.about h3{
+		display:flex;
+		align-items:center;
+		
+		color:#FF7575;
+		font-size:24px;
+	}
+	.about h3::before{
+		content:'';
+		display:inline-block;
+		width:5px;
+		height:30px;
+		margin-right:10px;
+		background:#FF7575;
+	}
+	.about p{
+		line-height:1.8;
+		margin:20px 0;
+		
+	}
+</style>
+</head>
+<body bgcolor="#cccccc">
+	<div class='login' >
+		<button id="show">登入</button>
+		<dialog id="infoModal">
+			<p>
+				<form>
+					<table  bgcolor=White cellpadding="10" border='0'>
+						<th><h1>login 登錄</h1></th>
+						<tr ><td><input type='text' placeholder='account number 帳號'></td></tr>
+						<tr><td><input type='password' placeholder='password 密碼'></td></tr>
+						<tr><td><input type='submit' value='登入'></td></tr>
+					</table>
+				</form>
+			</p>
+			<button id="close">關閉</button>
+		</dialog>
+	</div>
+	<script> 
+		let btn=document.querySelector("#show");
+		let infoModal=document.querySelector("#infoModal");
+		let close=document.querySelector("#close");
+		btn.addEventListener("click", function(){	
+				infoModal.showModal();
+		})
+		close.addEventListener("click", function(){
+		infoModal.close();
+		})
+	</script>	
+	<div class='logo'>
+		<img src=cocacola.png width=250>
+		<h4>可口可樂</h4>
+		<p>品味情懷</p>
+	</div>
+	<div class='nav'>
+		<ul>
+			<li>
+				<a href=''>首頁</a>
+			</li>
+			<li>
+				<a href=''>可口可樂公司</a>
+				<ul>
+					<li>
+						<a href=''>願景及企業承諾</a>
+					</li>
+					<li>
+						<a href=''>可口可樂歷史</a>
+					</li>
+					<li>
+						<a href=''>可持續發展</a>
+					</li>
+				</ul>
+			</li>
+			<li>
+				<a href=''>最新消息</a>
+			</li>
+			<li>
+				<a href=''>品牌介紹</a>
+				<ul>
+					<li>
+						<a href=''>可口可樂 ®</a>
+					</li>
+					<li>
+						<a href=''>雪碧 ®</a>
+					</li>
+					<li>
+						<a href=''>芬達 ®</a>
+					</li>
+				</ul>
+			</li>
+			<li>
+				<a href=''>最新影片</a>
+			</li>
+		</ul>
+	</div>
+	<div class='banner'>
+		<img src='cc.jpg'>
+	</div>
+	<div class='about'>
+		<h3>可口可樂®在台灣</h3>
+		<p>可口可樂系統是由可口可樂公司和全球約250個裝瓶夥伴所組成，讓我們的產品得以行銷全世界並同時聚焦當地，因為裝瓶夥伴是當地公司，不但深耕當地，同時懂得因地制宜提供最適宜的服務給當地消費者。
+
+ 
+
+「可口可樂」在台灣已經有50多年的歷史，最早可以追溯到1957年，當時由美國投資的中美汽水廠，生產的產品專供駐華美軍所飲用。1964年由國內工商人士陳啟清、辜振甫及楊麟等人共同出資成立了「台灣汽水廠股份有限公司」，籌備行銷國內市場，並在1968年向民眾銷售「可口可樂」。公司營運經過台灣汽水廠股份有限公司、台灣可口可樂股份有限公司等階段，在1994年太古集團取得經營權，成為可口可樂公司在台灣的裝瓶夥伴。
+
+ 
+
+目前在台灣由香港商可口可樂有限公司台灣分公司負責訂定市場策略及品牌管理，由台灣太古可口可樂公司負責生產及行銷。
+
+ 
+
+除了大家熟知的「可口可樂」，近幾年也成功的推出幾個受消費者喜愛的品牌，包括：2007年「可口可樂zero」、2008年「美粒果」、2010年的「爽健美茶」、2013年的「原萃」、2015年的「飛想茶」、2017年「舒味思」氣泡水以及2018年的「Toreta!」水份補給飲料。
+
+ 
+
+「可口可樂」公司目前在台灣市場提供15個品牌、超過30種以上的產品與口味，包括「可口可樂」、「可口可樂zero」、「可口可樂light」、「雪碧」、「芬達」、「舒味思」、「美粒果」、「原萃」、「爽健美茶」、「fuze tea飛想茶」、「AQUARIUS動元素」、「Toreta!多了他」、「水森活」、「A&W 麥根沙士」以及「ZICO 椰子水」等，涵蓋氣泡飲料、果汁、茶飲、運動飲料等。
+		</p>
+	</div>
+	
+	<br><br>
+	<div class='goto'>
+		<input type ="button" onclick="history.back()" value="上一頁"></input>
+		<input type ="button" onclick="history.forward()" value="下一頁">
+
+	</div>
+	<div class='more'>
+			了解更多:<input type ="button" onclick="javascript:location.href='https://www.coke.com.tw/zh/home'" value="可口可樂官網首頁"></input>
+	</div>
+</body>
+</html>
