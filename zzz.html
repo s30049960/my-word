@@ -70,7 +70,7 @@
 		}
 		/* 【第一層下拉選單】 */
 		.nav{
-			min-width: 124px;       /* 至少 124px 寬 */
+			min-width: 124px;       
 			width: max-content;	/* 寬度隨文字自動變寬 */
 			height:0px;	/* 隱藏 */
 			background:#fff;
@@ -82,14 +82,14 @@
 			overflow: hidden;       /* 確保高度 0 的時候裡面的字被藏住 */
 			opacity: 0;             /* 預設完全透明 */
 			visibility: hidden;     /* 物理隱藏，防止滑鼠點到隱形選單 */
-			transition: height 0.2s ease, opacity 0.2s ease; /* 漂亮的滑動 + 淡入動畫 */
+			transition: height 0.2s ease, opacity 0.2s ease; /* 滑動 + 淡入動畫 */
 			z-index: 999;
 			
 			display: flex;
 			flex-direction: column;
 		}
-		.black-nav-leht li:hover>.nav{	/* 當滑鼠游標移到導覽列的（li）時，改變它裡面 .nav 的區塊高度，讓它展開。 */
-			height: auto;          /* 高度,根據裡面的字數自動撐開 */
+		.black-nav-leht li:hover>.nav{	
+			height: auto;          /* 高度自動撐開 */
 			max-height: 400px;
 			opacity: 1;             /* 不透明 */
 			visibility: visible;    /* 顯示 */
@@ -99,22 +99,22 @@
 			color: #333;
 			font-size:15px;
 			line-height:36px;       /* 增加單行字行高*/
-			white-space: nowrap;    /* 強迫文字絕對不換行 */
-			padding: 0 15px;        /* 幫字體左右留點空間 */
+			white-space: nowrap;    /* 強迫文字不換行 */
+			padding: 0 15px;        
 			cursor: pointer;   /* 讓滑鼠變手指圖標 */
 		}
 		.nav p:hover {
-			background-color: #f5f5f5; /* 滑鼠移入變色 */
+			background-color: #f5f5f5; 
 		}
 		.nav a:hover {
-			background-color: #f5f5f5; /* 滑鼠移入變色 */
+			background-color: #f5f5f5; 
 		}
 		.nav a{
 			color: #333;
 			font-size:15px;
 			line-height:40px;       /* 增加單行字行高 */
 			text-align: center;
-			padding: 0 20px;        /* 字體左右留點空間 */
+			padding: 0 20px;        
 			cursor: pointer;   /* 讓滑鼠變手指圖標 */
 			
 			display: block;          
@@ -158,16 +158,16 @@
 		/* 底部背景 */
 		.background{
 			width: 100%;
-			min-height: calc(100vh - 160px); /* 確保背景圖至少填滿剩餘高度 */
+			min-height: calc(100vh - 160px); /* 確保背景圖填滿剩餘高度 */
 			background: linear-gradient(135deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0) 100%), url('https://i1-c.pinimg.com/1200x/63/c3/49/63c34951e02f64d11f6d358c754dd9ef.jpg');
 			background-size: cover;       /* 圖片自動縮放，填滿整個螢幕且不變形 */
-			background-position: center;  /* 圖片置中對齊 */
-			background-attachment: fixed;  /* 選用：滾動網頁時背景圖片固定，毛玻璃滑動時效果極佳 */
-			/* 啟用 Flexbox 彈性佈局，用來讓裡面的內容物置中 */
+			background-position: center;  /* 圖片對齊 */
+			background-attachment: fixed;  /* 滾動網頁時背景圖片固定*/
+			
 			display: flex;
 			justify-content: center;	/* 讓子元素（.main-body）在水平方向置中 */
-			align-items: flex-start;	/* 靠上對齊，讓毛玻璃可以順利向下延伸 */
-			font-family: sans-serif;	/* 設定字體為無襯線字體，看起來比較現代乾淨 */
+			align-items: flex-start;	/* 靠上對齊*/
+			font-family: sans-serif;	/* 設定字體為無襯線字體 */
 		}
 		/* 半透明區塊 */
 		.main-body {
@@ -176,21 +176,19 @@
 			height: auto;
 			box-sizing: border-box;     /* 防止 padding 把高度撐破 */
 			display: flex;              
-			flex-direction: row;     /* 設定為 row（橫向並排），這是預設值，寫出來更明確 */
+			flex-direction: row;     
 			gap: 20px;                  /* 上下欄位之間的間距 */
-			padding: 20px;              /* 幫內部四周留點空間 */
+			padding: 20px;              
 
-			/* 1. 半透明背景 (白色，透明度 55%) */
+			/*  半透明背景 (白色，透明度 ) */
 			background: rgba(255, 255, 255, 0.6); 
 
-			/* 2. 背景模糊效果 (數字越大越模糊) */
+			/* 背景模糊效果 (數字越大越模糊) */
 			backdrop-filter: blur(1px);
 			-webkit-backdrop-filter: blur(1px); /* 確保 Safari 瀏覽器相容性 */
-			/* 3. 邊線折射效果 (白色，透明度 30%) */
+			/* 邊線折射效果 (白色，透明度 30%) */
 			border: 1px solid rgba(255, 255, 255, 0.3);
-			/* 4. 柔和陰影 */
 			box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.15);
-			/* 文字顏色 */
 			color: #1a1a1a;
 		}
 		.separation{
@@ -222,7 +220,7 @@
 		.column-content{
 			width: 100%;
 			padding:20px 15px 20px 15px;
-			display: flex;         /* 啟動 Flexbox，強制讓公告和文字排在同一行 */
+			display: flex;        
 			flex-direction: column;
 			gap: 10px;
 			box-sizing: border-box;
@@ -230,7 +228,7 @@
 		
 		.hotspot-item {
 			display: flex;
-			align-items: center;    /* 讓方塊跟文字上下置中對齊 */
+			align-items: center;   
 			justify-content: flex-start; /* 靠左對齊 */
 			gap: 10px;              /* 公告方塊跟文字之間的左右間距 */
 		}
@@ -248,15 +246,12 @@
             font-weight: 500;
 		}
 		.btn a {
-			color: #ffffff;          /* 強制讓文字變白色，不被預設的藍色吃掉 */
-			text-decoration: none;   /* 拔掉超連結醜醜的底線 */
-			
-			/* 關鍵大絕招 */
+			color: #ffffff;          
+			text-decoration: none;   /* 刪掉超連結的底線 */
 			display: block;          /* 把 <a> 從行內元素變成區塊元素 */
-			width: 100%;             /* 寬度撐滿整個 .btn 外框 */
-			height: 100%;            /* 高度也撐滿整個 .btn 外框 */
+			width: 100%;             
+			height: 100%;          
 			
-			/* 讓文字在按鈕裡面完美上下左右居中 */
 			display: flex;
 			align-items: center;
 			justify-content: center;
@@ -301,7 +296,7 @@
 		}
 		/* 超連結：填滿整張卡片 */
 		.people a {
-			text-decoration: none;     /* 拔掉超連結底線 */
+			text-decoration: none;     /* 刪掉超連結底線 */
 			display: flex;
 			flex-direction: column;
 			align-items: center;
@@ -309,8 +304,8 @@
 		}
 		/* 照片設定 */
 		.people img {
-			display: block;            /* 消除圖片下方自帶的微小空白縫隙 */
-			width: 100px;              /* 寬度與卡片一致 */
+			display: block;            
+			width: 100px;              
 			height: auto;
 		}
 
@@ -319,7 +314,7 @@
 			background-color: black;
 			height: 30px;
 			line-height: 30px;
-			width: 100%;               /* 改成 100% 滿版，就不會跟外框對不齊 */
+			width: 100%;               
 			text-align: center;
 			color: #ffffff;
 			font-size: 14px;
@@ -327,11 +322,11 @@
 		
 		/* 分類小框 */
 		.box{
-			display: inline-block; /* 確保它可以設定寬高與內距 */
-			padding: 2px 8px;      /* 上下 2px，左右 8px 的內距，讓字不會太擠 */
-			border-radius: 4px;    /* 稍微做點圓角，看起來比較精緻 */
-			color: #ffffff;        /* 文字顏色改為白色 */
-			font-size: 14px;       /* 公告標籤的字體稍微縮小一點點 */
+			display: inline-block; 
+			padding: 2px 8px;      
+			border-radius: 4px;    
+			color: #ffffff;        
+			font-size: 14px;       
 			white-space: nowrap;   /* 避免「公告」兩個字因為空間不足而被擠到斷行 */
 		}
 		
@@ -347,7 +342,7 @@
 			font-size: 28px;         
 			font-weight: bold;      
 			color: #bbbbbb;          
-			letter-spacing: 1px;     /* 讓數字之間有一點點間隔 */
+			letter-spacing: 1px;     /* 讓數字之間有一點點間隔 
 		}
 		
 		
@@ -1010,31 +1005,31 @@
     // 抓取網頁上所有的內容區塊
     const contents = document.querySelectorAll('.tab-contents .detailed');
 
-    // 幫每一個按鈕加上「點擊監聽器」
+    // 按鈕加上「點擊監聽器」
     buttons.forEach(button => {
         button.addEventListener('click', () => {
             
-            // 關鍵修改：先檢查目前點擊的按鈕是不是本來就已經是亮著的 (.active)
+            // 先檢查目前點擊的按鈕是不是本來就已經是亮著的 (.active)
             const isAlreadyActive = button.classList.contains('active');
 
             if (isAlreadyActive) {
-                // 【情況一：點擊已亮起的按鈕 -> 取消過濾，回到預設全顯】
+                // 【點擊已亮起的按鈕 -> 取消過濾，回到預設全顯】
                 button.classList.remove('active');
                 
                 // 讓所有內容區塊都加上 active（通通顯示出來）
                 contents.forEach(content => content.classList.add('active'));
             } else {
-                // 【情況二：點擊其他按鈕 -> 正常過濾】
+                // 【點擊其他按鈕 -> 正常過濾】
                 
-                // A. 清除所有按鈕的 active 狀態
+                // 清除所有按鈕的 active 狀態
                 buttons.forEach(btn => btn.classList.remove('active'));
-                // B. 先清除所有內容的 active 狀態（全部藏起來）
+                // 先清除所有內容的 active 狀態（全部藏起來）
                 contents.forEach(content => content.classList.remove('active'));
 
-                // C. 幫當前被點擊的按鈕加上 active
+                // 幫當前被點擊的按鈕加上 active
                 button.classList.add('active');
 
-                // D. 找出這個按鈕對應的內容 id，並讓它顯示
+                // 找出這個按鈕對應的內容 id，並讓它顯示
                 const targetId = button.getAttribute('data-target');
                 document.getElementById(targetId).classList.add('active');
             }
@@ -1050,7 +1045,7 @@
 
         const now = new Date();
 
-        // 1. 抓取年月日的資料
+        //  抓取年月日的資料
         const year = now.getFullYear();
         // 月份從 0 開始算，所以要 +1。padStart(2, '0') 可以確保數字不滿兩位數時自動補 0 (例如 5月 變成 05月)
         const month = String(now.getMonth() + 1).padStart(2, '0');
@@ -1060,12 +1055,12 @@
         const weekArray = ['日', '一', '二', '三', '四', '五', '六'];
         const day = weekArray[now.getDay()];
 
-        // 2. 抓取時分秒的資料
+        //  抓取時分秒的資料
         const hours = String(now.getHours()).padStart(2, '0');
         const minutes = String(now.getMinutes()).padStart(2, '0');
         const seconds = String(now.getSeconds()).padStart(2, '0');
 
-        // 3. 把組裝好的文字丟回網頁上
+        //  
         dateElement.innerText = `${year} 年 ${month} 月 ${date} 日 (星期${day})`;
         timeElement.innerText = `${hours}:${minutes}:${seconds}`;
     }
@@ -1073,7 +1068,7 @@
     // 網頁一打開，立刻執行一次，才不會畫面空白一秒
     clockInsideWeb();
 
-    // 關鍵設定：設定每 1000 毫秒（也就是 1 秒）讓瀏覽器自動重新執行一次這個函式
+    // 設定每 1000 毫秒（也就是 1 秒）讓瀏覽器自動重新執行一次這個函式
     setInterval(clockInsideWeb, 1000);
     //按鈕end
     
