@@ -1,0 +1,1083 @@
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>首頁</title>
+	<style>
+		body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, fom, fieldset, legend, inline{
+			margin:0;
+			padding:0;
+		}
+		body{
+			text-align: center;
+		}
+		li{
+			list-style: none;
+		}
+		a{
+			text-decoration:none;
+		}
+		img{
+			border: none;
+		}
+		/* 頂部 */
+		.header{
+			width: 100%;
+			height: 120px;
+			background: linear-gradient(135deg, #0d1b2acc 0%, #123475aa 100%), url('https://i1-c.pinimg.com/1200x/68/d2/97/68d29765baedee7502f17732953948c1.jpg');
+			
+			background-size: cover;
+			background-position: center;
+			background-repeat: no-repeat;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			
+		}
+		.header-logo:hover {
+			color: #00f2fe;
+			text-shadow: 0 0 15px #00f2fe, 0 0 30px #00f2fe;
+			transform: scale(1.05); /* 微放大 */
+		}
+		/* 導覽 start */
+		.black-nav{
+			width:100%;
+			height:40px;
+			line-height:40px;
+			background: #333;
+			font-size:20px;
+		}
+		.black-nav .wrap{
+			width:1226px;
+			margin:0 auto;
+		}
+		.black-nav .wrap .black-nav-leht{
+			float:left;
+		}
+		.black-nav .wrap .black-nav-right{
+			float:right;
+		}
+		.black-nav .wrap li{
+			float: left;
+			position: relative;	/* 相對定位 */
+		}
+		.black-nav a{
+			color:#b0b0b0;
+		}
+		.black-nav .wrap li span{
+			color: #424242;
+			margin: 0 3.6px;
+			
+		}
+		/* 【第一層下拉選單】 */
+		.nav{
+			min-width: 124px;       /* 至少 124px 寬 */
+			width: max-content;	/* 寬度隨文字自動變寬 */
+			height:0px;	/* 隱藏 */
+			background:#fff;
+			box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+			position: absolute;
+			top:40px;
+			left:50%;
+			transform: translateX(-50%); /* 置中，不論多寬都置中 */
+			overflow: hidden;       /* 確保高度 0 的時候裡面的字被藏住 */
+			opacity: 0;             /* 預設完全透明 */
+			visibility: hidden;     /* 物理隱藏，防止滑鼠點到隱形選單 */
+			transition: height 0.2s ease, opacity 0.2s ease; /* 漂亮的滑動 + 淡入動畫 */
+			z-index: 999;
+			
+			display: flex;
+			flex-direction: column;
+		}
+		.black-nav-leht li:hover>.nav{	/* 當滑鼠游標移到導覽列的（li）時，改變它裡面 .nav 的區塊高度，讓它展開。 */
+			height: auto;          /* 高度,根據裡面的字數自動撐開 */
+			max-height: 400px;
+			opacity: 1;             /* 不透明 */
+			visibility: visible;    /* 顯示 */
+			overflow: visible;      /* 允許子選單跑出框外 */
+		}
+		.nav p{
+			color: #333;
+			font-size:15px;
+			line-height:36px;       /* 增加單行字行高*/
+			white-space: nowrap;    /* 強迫文字絕對不換行 */
+			padding: 0 15px;        /* 幫字體左右留點空間 */
+			cursor: pointer;   /* 讓滑鼠變手指圖標 */
+		}
+		.nav p:hover {
+			background-color: #f5f5f5; /* 滑鼠移入變色 */
+		}
+		.nav a:hover {
+			background-color: #f5f5f5; /* 滑鼠移入變色 */
+		}
+		.nav a{
+			color: #333;
+			font-size:15px;
+			line-height:40px;       /* 增加單行字行高 */
+			text-align: center;
+			padding: 0 20px;        /* 字體左右留點空間 */
+			cursor: pointer;   /* 讓滑鼠變手指圖標 */
+			
+			display: block;          
+			text-decoration: none;
+		}
+		.stri{
+			width:0;
+			height:0;
+			border-bottom:8px solid #fff;
+			border-left:8px solid transparent;
+			border-right:8px solid transparent;
+			position:absolute;
+			top: 32px;
+			left:50%;
+			margin-left:-8px;
+			display:none;
+			z-index: 1000;
+		}
+		.black-nav-leht>li:hover>.stri{
+			display:block;
+		}
+		.sub-item-wrap {
+			position: relative;
+		}
+		/* 【第二層子選單 (.nav-nav)】 */
+		
+		.nav-nav {
+			min-width: 124px;
+			width: max-content;
+			background: #fff;
+			box-shadow: 2px 2px 8px rgba(0,0,0,0.15);
+			position: absolute;
+			left: 100%;       /* 緊貼在第一層選單的右側 */
+			top: 0;           /* 與「角色」這行齊頭 */
+			display: none;    /* 預設隱藏 */
+		}
+		.sub-item-wrap:hover .nav-nav {
+			display: block;
+		}
+		/* 主體start */
+		/* 底部背景 */
+		.background{
+			width: 100%;
+			min-height: calc(100vh - 160px); /* 確保背景圖至少填滿剩餘高度 */
+			background: linear-gradient(135deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0) 100%), url('https://i1-c.pinimg.com/1200x/63/c3/49/63c34951e02f64d11f6d358c754dd9ef.jpg');
+			background-size: cover;       /* 圖片自動縮放，填滿整個螢幕且不變形 */
+			background-position: center;  /* 圖片置中對齊 */
+			background-attachment: fixed;  /* 選用：滾動網頁時背景圖片固定，毛玻璃滑動時效果極佳 */
+			/* 啟用 Flexbox 彈性佈局，用來讓裡面的內容物置中 */
+			display: flex;
+			justify-content: center;	/* 讓子元素（.main-body）在水平方向置中 */
+			align-items: flex-start;	/* 靠上對齊，讓毛玻璃可以順利向下延伸 */
+			font-family: sans-serif;	/* 設定字體為無襯線字體，看起來比較現代乾淨 */
+		}
+		/* 半透明區塊 */
+		.main-body {
+			width: 80%;					
+			min-height: calc(100vh - 160px);
+			height: auto;
+			box-sizing: border-box;     /* 防止 padding 把高度撐破 */
+			display: flex;              
+			flex-direction: row;     /* 設定為 row（橫向並排），這是預設值，寫出來更明確 */
+			gap: 20px;                  /* 上下欄位之間的間距 */
+			padding: 20px;              /* 幫內部四周留點空間 */
+
+			/* 1. 半透明背景 (白色，透明度 55%) */
+			background: rgba(255, 255, 255, 0.6); 
+
+			/* 2. 背景模糊效果 (數字越大越模糊) */
+			backdrop-filter: blur(1px);
+			-webkit-backdrop-filter: blur(1px); /* 確保 Safari 瀏覽器相容性 */
+			/* 3. 邊線折射效果 (白色，透明度 30%) */
+			border: 1px solid rgba(255, 255, 255, 0.3);
+			/* 4. 柔和陰影 */
+			box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.15);
+			/* 文字顏色 */
+			color: #1a1a1a;
+		}
+		.separation{
+			/* flex: 1;  */    
+			padding: 20px;
+			display: flex;
+			flex-direction: column; 
+			gap: 15px;                 /* 標題和內容之間的間距 */
+		}
+		/* 個欄位 */
+		.column {
+			/* flex: 1;  */    
+			background-color: #f0f0f0;
+			flex-direction: column; 
+			display: flex;
+			border-radius: 8px;
+			text-align: center;
+			overflow: hidden;	/* 確保標題的圓角不會被切掉 */
+		}
+		.column-title{
+			background-color: black;
+			height:30px;
+			line-height: 30px;     /* 讓文字在 30px 的高度裡垂直置中 */
+			width: 100%;
+			border-radius: 8px 8px 0px 0px;
+			text-align: center;
+			color: #ffffff;
+		}
+		.column-content{
+			width: 100%;
+			padding:20px 15px 20px 15px;
+			display: flex;         /* 啟動 Flexbox，強制讓公告和文字排在同一行 */
+			flex-direction: column;
+			gap: 10px;
+			box-sizing: border-box;
+		}
+		
+		.hotspot-item {
+			display: flex;
+			align-items: center;    /* 讓方塊跟文字上下置中對齊 */
+			justify-content: flex-start; /* 靠左對齊 */
+			gap: 10px;              /* 公告方塊跟文字之間的左右間距 */
+		}
+		
+		.btn{
+			display: inline-block;
+			border:1px solid;
+			border-radius: 4px;
+			background:#333;
+			color: #ffffff;
+            padding: 10px 20px;
+            cursor: pointer;           /* 讓滑鼠移上去變手指圖標 */
+            user-select: none;  
+			transition: background-color 0.2s;
+            font-weight: 500;
+		}
+		.btn a {
+			color: #ffffff;          /* 強制讓文字變白色，不被預設的藍色吃掉 */
+			text-decoration: none;   /* 拔掉超連結醜醜的底線 */
+			
+			/* 關鍵大絕招 */
+			display: block;          /* 把 <a> 從行內元素變成區塊元素 */
+			width: 100%;             /* 寬度撐滿整個 .btn 外框 */
+			height: 100%;            /* 高度也撐滿整個 .btn 外框 */
+			
+			/* 讓文字在按鈕裡面完美上下左右居中 */
+			display: flex;
+			align-items: center;
+			justify-content: center;
+		}
+		.btn:hover {
+			background-color: #555;
+		}
+		/* 按鈕點下去後的樣子 */
+		.btn.active {
+			background-color: #fff; 
+			color:#000;
+		}
+		/* 按鈕點下去後顯示的東 */
+		.detailed {
+			display: none; 	/* 預設隱藏 */
+			width: 100%;
+			padding: 25px 20px;
+			box-sizing: border-box;
+			background-color: #f0f0f0;
+			border-radius: 0 0 8px 8px; /* 下半部圓角 */
+		}
+		.detailed.active {
+			display: flex;             
+			flex-wrap: wrap;           /* 寬度不夠時，會自動換到下一行 */
+			justify-content: center;   /* 讓所有角色在區塊中水平居中（若想靠左，可改為 flex-start） */
+			gap: 10px;
+			padding: 10px;
+		}
+		/**/
+		.people {
+			/* flex: 1;  */    
+			background-color: #f0f0f0;
+			display: inline-flex;
+			flex-direction: column; 
+			display: flex;
+			border: 1px solid #ccc;
+			border-radius: 8px;
+			align-items: center;
+			text-align: center;
+			overflow: hidden;	/* 確保標題的圓角不會被切掉 */
+			width: 100px;              
+		}
+		/* 超連結：填滿整張卡片 */
+		.people a {
+			text-decoration: none;     /* 拔掉超連結底線 */
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			width: 100%;
+		}
+		/* 照片設定 */
+		.people img {
+			display: block;            /* 消除圖片下方自帶的微小空白縫隙 */
+			width: 100px;              /* 寬度與卡片一致 */
+			height: auto;
+		}
+
+		/* 名字設定 */
+		.people-name {
+			background-color: black;
+			height: 30px;
+			line-height: 30px;
+			width: 100%;               /* 改成 100% 滿版，就不會跟外框對不齊 */
+			text-align: center;
+			color: #ffffff;
+			font-size: 14px;
+		}
+		
+		/* 分類小框 */
+		.box{
+			display: inline-block; /* 確保它可以設定寬高與內距 */
+			padding: 2px 8px;      /* 上下 2px，左右 8px 的內距，讓字不會太擠 */
+			border-radius: 4px;    /* 稍微做點圓角，看起來比較精緻 */
+			color: #ffffff;        /* 文字顏色改為白色 */
+			font-size: 14px;       /* 公告標籤的字體稍微縮小一點點 */
+			white-space: nowrap;   /* 避免「公告」兩個字因為空間不足而被擠到斷行 */
+		}
+		
+		/* time */
+
+		#current-date {
+			font-size: 14px;
+			color: #8a9ba8;         
+			margin-bottom: 5px;
+		}
+
+		#current-time {
+			font-size: 28px;         
+			font-weight: bold;      
+			color: #bbbbbb;          
+			letter-spacing: 1px;     /* 讓數字之間有一點點間隔 */
+		}
+		
+		
+	</style>
+	
+</head>
+<body>
+	<!-- 頂部 start -->
+	<div class="header">
+		<a href="#">
+		</a>
+	</div>
+	<!-- 頂部 end -->
+	<!-- 導覽 start -->
+	<div class="black-nav">
+		<div class="wrap">
+			<ul class="black-nav-leht">
+				<li><a href="https://wiki.biligame.com/zzz/%E9%A6%96%E9%A1%B5">首頁</a><span>|</span></li>
+				<li>
+					<a href="#">導覽</a>
+					<span>|</span>
+					<div class="nav">
+						<a href="https://wiki.biligame.com/zzz/%E6%96%B0%E6%89%8B%E6%95%99%E7%A8%8B">新手教學</a>
+						
+						<a href="https://wiki.biligame.com/zzz/%E5%90%8D%E8%AF%8D%E8%A7%A3%E6%9E%90">名詞解析</a>
+						<a href="https://wiki.biligame.com/zzz/%E9%A9%B1%E5%8A%A8%E7%9B%98">驅動盤詳情</a>
+						<a href="https://wiki.biligame.com/zzz/%E9%9F%B3%E6%93%8E">音擎詳情</a>
+					</div>
+					<div class="stri"></div>
+				</li>
+				<li>
+					<a href="#">圖鑑</a>
+					<span>|</span>
+					<div class="nav">	
+						<div class="sub-item-wrap">
+							<p>角色</p>
+							<div class="nav-nav">
+								<a href="https://wiki.biligame.com/zzz/%E8%A7%92%E8%89%B2%E5%9B%BE%E9%89%B4">角色介紹</a>
+								<a href="https://wiki.biligame.com/zzz/%E8%A7%92%E8%89%B2%E7%AD%9B%E9%80%89">角色篩選</a>
+							</div>
+						</div>
+						<div class="sub-item-wrap">
+							<a href="">邦布</a>
+							<div class="nav-nav">
+								<a href="https://wiki.biligame.com/zzz/%E9%9F%B3%E6%93%8E%E5%9B%BE%E9%89%B4">邦布圖鑑</a>
+								<a href="https://wiki.biligame.com/zzz/%E9%82%A6%E5%B8%83%E7%AD%9B%E9%80%89">邦布篩選</a>
+							</div>
+						</div>
+						<div class="sub-item-wrap">
+							<p>驅動盤詳情</p>
+							<div class="nav-nav">
+								<a href="https://wiki.biligame.com/zzz/%E9%A9%B1%E5%8A%A8%E7%9B%98">驅動盤介紹</a>
+								<a href="https://wiki.biligame.com/zzz/%E9%A9%B1%E5%8A%A8%E7%9B%98%E5%9B%BE%E9%89%B4">驅動盤圖鑑</a>
+								<a href="https://wiki.biligame.com/zzz/%E9%A9%B1%E5%8A%A8%E7%9B%98%E7%AD%9B%E9%80%89">驅動盤篩選</a>
+							</div>
+						</div>
+						<div class="sub-item-wrap">
+							<a href="https://wiki.biligame.com/zzz/%E6%9D%90%E6%96%99%E7%AD%9B%E9%80%89">材料篩選</a>
+							<div class="nav-nav">
+								
+							</div>
+						</div>
+						<div class="sub-item-wrap">
+							<a href="https://wiki.biligame.com/zzz/%E6%B4%BB%E5%8A%A8%E4%B8%80%E8%A7%88">活動一覽</a>
+							<div class="nav-nav">
+							
+							</div>
+						</div>
+						<div class="sub-item-wrap">
+							<a href="https://wiki.biligame.com/zzz/%E6%95%B2%E6%95%B2">敲敲</a>
+							<div class="nav-nav">
+								
+							</div>
+						</div>
+						
+					</div>
+					<div class="stri"></div>
+				</li>
+				<li>
+					<a href="#">玩法</a>
+					<span>|</span>
+					<div class="nav">	
+						<div class="sub-item-wrap">
+							<a href="https://wiki.biligame.com/zzz/%E5%BC%8F%E8%88%86%E9%98%B2%E5%8D%AB%E6%88%98">式與防衛戰</a>
+							<div class="nav-nav">
+
+							</div>
+						</div>
+						<div class="sub-item-wrap">
+							<p>零號空洞</p>
+							<div class="nav-nav">
+								<a href="https://wiki.biligame.com/zzz/%E9%9B%B6%E5%8F%B7%E7%A9%BA%E6%B4%9E">總覽</a>
+								<a href="https://wiki.biligame.com/zzz/%E9%B8%A3%E5%BE%BD%E4%B8%80%E8%A7%88">鳴徽一覽</a>
+								<a href="https://wiki.biligame.com/zzz/%E4%BE%B5%E8%9A%80%E4%B8%80%E8%A7%88">侵蝕一覽</a>
+							</div>
+						</div>
+						<div class="sub-item-wrap">
+							<a href="https://wiki.biligame.com/zzz/%E7%94%B5%E7%8E%A9%E5%BA%97">電玩店</a>
+							<div class="nav-nav">
+
+							</div>
+						</div>
+						
+					</div>
+					<div class="stri"></div>
+				</li>
+
+				<li>
+					<a href="">擴展閱讀</a>
+					<span>|</span>
+					<div class="nav">	
+						<div class="sub-item-wrap">
+							<a href="https://wiki.biligame.com/zzz/%E8%A7%92%E8%89%B2%E8%B4%BA%E5%9B%BE">角色生日賀圖</a>
+							<div class="nav-nav">
+
+							</div>
+						</div>
+						<div class="sub-item-wrap">
+							<a href="https://wiki.biligame.com/zzz/%E8%81%8A%E5%A4%A9%E8%A1%A8%E6%83%85">聊天表情</a>
+							<div class="nav-nav">
+
+							</div>
+						</div>
+						<div class="sub-item-wrap">
+							<a href="https://wiki.biligame.com/zzz/%E8%B0%83%E9%A2%91">限定調頻</a>
+							<div class="nav-nav">
+
+							</div>
+						</div>
+					</div>
+					<div class="stri"></div>
+				</li>
+			</ul>
+			
+		</div>
+	</div>
+	<!-- 導覽 end -->
+	<!-- 主體 start -->
+	<div class='background'>
+		<div class='main-body'>
+			<div class="separation" style="flex: 0.5;" >
+				<div class='column'>
+					<div class='column-title'>熱點</div>
+					<div class='column-content'>
+					
+						<div class="hotspot-item">
+							<div class='box' style='background:#EAC100'>公告</div>
+							<span class="greeting">2.8 版本「新·艾利都日落时」更新公告</span>
+						</div>
+					
+						<div class="hotspot-item">
+							<div class='box' style='background:#EAC100'>公告</div>
+							<span class="greeting">2.8版本前瞻直播總結</span>
+						</div>
+
+						<div class="hotspot-item">
+							<div class='box' style='background:#EAC100'>公告</div>
+							<span class="greeting">2.7版本「英雄不死於往昔」更新公告</span>
+						</div>
+						
+						<div class="hotspot-item">
+							<div class='box' style='background:#123456'>衛星</div>
+							<span class="greeting">普羅米婭</span>
+						</div>
+						
+						<div class="hotspot-item">
+							<div class='box' style='background:#123456'>衛星</div>
+							<span class="greeting">星徽·比例</span>
+						</div>
+						
+						<div class='btn'><a href="https://wiki.biligame.com/zzz/%E9%A6%96%E9%A1%B5" target="_blank">查看更多</a></div>
+						
+					</div>	
+				</div>
+				
+				<div class='column'>
+					<div class='column-title'>攻略</div>
+					<div class='column-content'>
+						<div class="hotspot-item">
+							<div class='box' style='background:#A6FFFF'>新手</div>
+							<span class="greeting">新手教程</span>
+						</div>
+					
+						<div class="hotspot-item">
+							<div class='box' style='background:#A6FFFF'>新手</div>
+							<span class="greeting">配對教程</span>
+						</div>
+
+						<div class="hotspot-item">
+							<div class='box' style='background:#0066CC'>科普</div>
+							<span class="greeting">世界觀</span>
+						</div>
+						
+						<div class='btn'><a href="https://wiki.biligame.com/zzz/%E9%A6%96%E9%A1%B5" target="_blank">查看更多</a></div>
+						
+					</div>	
+				</div>
+				
+			</div>
+			<div class="separation" style="flex: 1;" >
+				<div class='column'>
+					<div class='column-title'>代理人一覽</div>
+					<div class='column-content'>
+						<!-- 按鈕區 -->
+							<div class="tab-buttons">
+							<div class='btn' data-target="ice">冰</div>
+							<div class='btn' data-target="fire">火</div>
+							<div class='btn' data-target="electricity">電</div>
+							<div class='btn' data-target="wind">風</div>
+							<div class='btn' data-target="ether">乙太</div>
+							<div class='btn' data-target="physics">物理</div>
+							<div class='btn' data-target="frost">烈霜</div>
+							<div class='btn' data-target="xuanmo">玄墨</div>
+							<div class='btn' data-target="rin">凜刃</div>
+						</div>
+						<!-- 內容區 -->
+						<div class="tab-contents">
+							<div id="ice" class="detailed active">
+								
+								<div class='people'>
+									<a href="https://wiki.biligame.com/zzz/%E8%8B%8D%E8%A7%92">
+									<img src="https://patchwiki.biligame.com/images/zzz/c/c0/2gntr9rw018n0sjjr86rqzsxbf72lqa.png"  alt="蒼角" title="蒼角">
+									<div class='people-name' >蒼角</div>
+									</a>
+								</div>
+								
+								<div class='people'>
+									<a href="https://wiki.biligame.com/zzz/%E8%89%BE%E8%8E%B2">
+									<img src="https://patchwiki.biligame.com/images/zzz/7/77/bnnfnp3tyyt7shlqhqnfsokomofn5l4.png"  alt="艾蓮" title="艾蓮">
+									<div class='people-name' >艾蓮</div>
+									</a>
+								</div>
+								
+								<div class='people'>
+									<a href="https://wiki.biligame.com/zzz/%E8%8E%B1%E5%8D%A1%E6%81%A9">
+									<img src="https://patchwiki.biligame.com/images/zzz/thumb/7/76/ik8q48b9gpe8cdqaqdqaqj8845uzox1.png/800px-%E8%A7%92%E8%89%B2%E7%AB%8B%E7%BB%98-%E8%8E%B1%E5%8D%A1%E6%81%A9-%E5%AE%98%E6%96%B9%E4%BB%8B%E7%BB%8D.png.jpeg"  alt="萊卡恩" title="萊卡恩">
+									<div class='people-name' >萊卡恩</div>
+									</a>
+								</div>
+								
+								<div class='people'>
+									<a href="https://wiki.biligame.com/zzz/%E9%9B%85">
+									<img src="https://patchwiki.biligame.com/images/zzz/f/f1/qhhn9vgfo8aibapl1rz1c5ng6toptup.png"  alt="星見雅" title="星見雅">
+									<div class='people-name' >星見雅</div>
+									</a>
+								</div>
+								
+								<div class='people'>
+									<a href="https://wiki.biligame.com/zzz/%E4%BC%8A%E5%BE%B7%E6%B5%B7%E8%8E%89">
+									<img src="https://patchwiki.biligame.com/images/zzz/thumb/2/24/1tuj3sfs62jdacmk6umu83f2o27yde9.png/800px-%E8%A7%92%E8%89%B2%E7%AB%8B%E7%BB%98-%E4%BC%8A%E5%BE%B7%E6%B5%B7%E8%8E%89-%E5%AE%98%E6%96%B9%E4%BB%8B%E7%BB%8D.png"  alt=" 伊德海莉" title="伊德海莉">
+									<div class='people-name' >伊德海莉</div>
+									</a>
+								</div>
+								
+								<div class='people'>
+									<a href="https://wiki.biligame.com/zzz/%E9%9B%A8%E6%9E%9C">
+									<img src="https://patchwiki.biligame.com/images/zzz/2/23/d0tqd4gbf7ex2i6nx8kpwnhvc1p16wr.png"  alt="雨果" title="雨果">
+									<div class='people-name' >雨果</div>
+									</a>
+								</div>
+								
+								<div class='people'>
+									<a href="https://wiki.biligame.com/zzz/%E7%85%A7">
+									<img src="https://patchwiki.biligame.com/images/zzz/9/92/7mo4nox1d7fn7ds7kwf0ewch2lvkmg2.png"  alt="照" title="照">
+									<div class='people-name' >照</div>
+									</a>
+								</div>
+								
+								<div class='people'>
+									<a href="https://wiki.biligame.com/zzz/%E6%99%AE%E7%BD%97%E7%B1%B3%E5%A8%85">
+									<img src="https://patchwiki.biligame.com/images/zzz/0/02/157tij6nrw4fpmtgiuuib17q4dl7d8y.png"  alt="普羅米婭" title="普羅米婭">
+									<div class='people-name' >普羅米婭</div>
+									</a>
+								</div>
+							</div>
+							
+								<div id="fire" class="detailed">
+				
+									<div class='people'>
+										<a href="https://wiki.biligame.com/zzz/%E8%88%AC%E5%B2%B3">
+										<img src="https://patchwiki.biligame.com/images/zzz/d/d5/03ar2ug0tmsvv36mbjeck4f76g76ygh.png"  alt="般岳" title="般岳">
+										<div class='people-name' >般岳</div>
+										</a>
+									</div>
+									
+									<div class='people'>
+										<a href="https://wiki.biligame.com/zzz/%E5%A5%A5%E8%8F%B2%E4%B8%9D%26%E3%80%8C%E9%AC%BC%E7%81%AB%E3%80%8D">
+										<img src="https://patchwiki.biligame.com/images/zzz/7/73/o93ntzragrxy4nqe80m6cdme38w7hdc.png"  alt="奧菲斯&鬼火" title="奧菲斯&鬼火">
+										<div class='people-name' >奧菲斯&鬼火</div>
+										</a>
+									</div>
+									
+									<div class='people'>
+										<a href="https://wiki.biligame.com/zzz/%E6%A9%98%E7%A6%8F%E7%A6%8F">
+										<img src="https://patchwiki.biligame.com/images/zzz/5/57/2qn341uhutjnpm5wm4vjx01sshz2tud.png"  alt="橘福福" title="橘福福">
+										<div class='people-name' >橘福福</div>
+										</a>
+									</div>
+									
+									<div class='people'>
+										<a href="https://wiki.biligame.com/zzz/%E4%BC%8A%E8%8A%99%E7%90%B3">
+										<img src="https://patchwiki.biligame.com/images/zzz/f/f9/jz2uvzqy56h0w50qbrt7nwxgty1gkhb.png"  alt="伊芙琳" title="伊芙琳">
+										<div class='people-name' >伊芙琳</div>
+										</a>
+									</div>
+									
+									<div class='people'>
+										<a href="https://wiki.biligame.com/zzz/%E8%8E%B1%E7%89%B9">
+										<img src="https://patchwiki.biligame.com/images/zzz/c/cc/2k8jvwam8236t921fwr9dycmg4u5fo0.png"  alt="萊特" title="萊特">
+										<div class='people-name' >萊特</div>
+										</a>
+									</div>
+									
+									<div class='people'>
+										<a href="https://wiki.biligame.com/zzz/%E6%9F%8F%E5%A6%AE%E6%80%9D">
+										<img src="https://patchwiki.biligame.com/images/zzz/3/39/f14ioe9n2w707bznjxrvgm1dwskptkn.png"  alt="柏妮思" title="柏妮思">
+										<div class='people-name' >柏妮思</div>
+										</a>
+									</div>
+									
+									<div class='people'>
+										<a href="https://wiki.biligame.com/zzz/%E3%80%8C11%E5%8F%B7%E3%80%8D">
+										<img src="https://patchwiki.biligame.com/images/zzz/d/da/1jcfz6qmjt2xybi02xp1chno0638vf7.png"  alt="11號" title="11號">
+										<div class='people-name' >11號</div>
+										</a>
+									</div>
+									
+									<div class='people'>
+										<a href="https://wiki.biligame.com/zzz/%E7%8F%82%E8%95%BE%E5%A6%B2">
+										<img src="https://patchwiki.biligame.com/images/zzz/2/23/q44wnf1pm59zwf7f4fmxax7pf3jbv85.png"  alt="珂蕾妲" title="珂蕾妲">
+										<div class='people-name' >珂蕾妲</div>
+										</a>
+									</div>
+									
+									<div class='people'>
+										<a href="https://wiki.biligame.com/zzz/%E7%9C%9F%E6%96%97">
+										<img src="https://patchwiki.biligame.com/images/zzz/7/76/jy5qgcwjg3eivj6phb97f3y2uxfpx9d.png"  alt="真斗" title="真斗">
+										<div class='people-name' >真斗</div>
+										</a>
+									</div>
+									
+									<div class='people'>
+										<a href="https://wiki.biligame.com/zzz/%E6%9C%AC">
+										<img src="https://patchwiki.biligame.com/images/zzz/b/b4/pukwhion4m1wz52riscfhqpf7chgbvl.png"  alt="本" title="本">
+										<div class='people-name' >本</div>
+										</a>
+									</div>
+									
+									<div class='people'>
+										<a href="https://wiki.biligame.com/zzz/%E9%9C%B2%E8%A5%BF">
+										<img src="https://patchwiki.biligame.com/images/zzz/9/90/a6z25vl39s5ajsvp5cge8dxwr0huspy.png"  alt="露西" title="露西">
+										<div class='people-name' >露西</div>
+										</a>
+									</div>
+									
+								</div>
+								
+								<div class='people'>
+							</div>
+							
+							<div id="electricity" class="detailed">
+		
+								<div class='people'>
+									<a href="https://wiki.biligame.com/zzz/%E5%B8%8C%E5%B8%8C%E8%8A%99">
+									<img src="https://patchwiki.biligame.com/images/zzz/a/a8/44osyialfbtk7irs8mrirh0rn83oor8.png"  alt="希希芙" title="希希芙">
+									<div class='people-name' >希希芙</div>
+									</a>
+								</div>
+								
+								<div class='people'>
+									<a href="https://wiki.biligame.com/zzz/%E3%80%8C%E5%B8%AD%E5%BE%B7%E3%80%8D">
+									<img src="https://patchwiki.biligame.com/images/zzz/thumb/8/8c/cys4s3xcr8xwbo9blb9gflftf1s3new.png/800px-%E8%A7%92%E8%89%B2%E7%AB%8B%E7%BB%98-%E3%80%8C%E5%B8%AD%E5%BE%B7%E3%80%8D-%E5%AE%98%E6%96%B9%E4%BB%8B%E7%BB%8D.png"  alt="「席德」" title="「席德」">
+									<div class='people-name' >「席德」</div>
+									</a>
+								</div>
+								
+								<div class='people'>
+									<a href="https://wiki.biligame.com/zzz/%E3%80%8C%E6%89%B3%E6%9C%BA%E3%80%8D">
+									<img src="https://patchwiki.biligame.com/images/zzz/2/22/121sbdr6483ik0hnvxg85pbvmyi7tzd.png"  alt="「扳機」" title="「扳機」">
+									<div class='people-name' >「扳機」</div>
+									</a>
+								</div>
+								
+								<div class='people'>
+									<a href="https://wiki.biligame.com/zzz/%E9%9B%B6%E5%8F%B7%C2%B7%E5%AE%89%E6%AF%94">
+									<img src="https://patchwiki.biligame.com/images/zzz/5/5d/o9hsw53vupkkx1eroh39umnywugfen3.png"  alt="零號·安比" title="零號·安比">
+									<div class='people-name' >零號·安比</div>
+									</a>
+								</div>
+								
+								<div class='people'>
+									<a href="https://wiki.biligame.com/zzz/%E6%82%A0%E7%9C%9F">
+									<img src="https://patchwiki.biligame.com/images/zzz/3/30/bz7edynz4stkl8eb087cpw1mfqnod7j.png"  alt="悠真" title="悠真">
+									<div class='people-name' >悠真</div>
+									</a>
+								</div>
+								
+								<div class='people'>
+									<a href="https://wiki.biligame.com/zzz/%E6%9F%B3">
+									<img src="https://patchwiki.biligame.com/images/zzz/5/52/k4l8p5qhtvv602pj045i5bti7hp3qd7.png"  alt="月城柳" title="月城柳">
+									<div class='people-name' >月城柳</div>
+									</a>
+								</div>
+								
+								<div class='people'>
+									<a href="https://wiki.biligame.com/zzz/%E9%9D%92%E8%A1%A3">
+									<img src="https://patchwiki.biligame.com/images/zzz/5/57/mg1mul7avxv9qhytpfbeouc40vgob88.png"  alt="青衣" title="青衣">
+									<div class='people-name' >青衣</div>
+									</a>
+								</div>
+								
+								<div class='people'>
+									<a href="https://wiki.biligame.com/zzz/%E4%B8%BD%E5%A8%9C">
+									<img src="https://patchwiki.biligame.com/images/zzz/thumb/2/2f/n439fgx5fjtvmxgupz6jk6c9x4cu41z.png/800px-%E8%A7%92%E8%89%B2%E7%AB%8B%E7%BB%98-%E4%B8%BD%E5%A8%9C-%E5%AE%98%E6%96%B9%E4%BB%8B%E7%BB%8D.png"  alt="麗娜" title="麗娜">
+									<div class='people-name' >麗娜</div>
+									</a>
+								</div>
+								
+								<div class='people'>
+									<a href="https://wiki.biligame.com/zzz/%E6%A0%BC%E8%8E%89%E4%B8%9D">
+									<img src="https://patchwiki.biligame.com/images/zzz/d/d1/4xf1pbv5g0yvfz2rqztvhztgkrqzmmr.png"  alt="格莉絲" title="格莉絲">
+									<div class='people-name' >格莉絲</div>
+									</a>
+								</div>
+								
+								<div class='people'>
+									<a href="https://wiki.biligame.com/zzz/%E8%B5%9B%E6%96%AF">
+									<img src="https://patchwiki.biligame.com/images/zzz/5/53/spd20wolbwo85jgq4c84hk7c8z38chy.png"  alt="賽斯" title="賽斯">
+									<div class='people-name' >賽斯</div>
+									</a>
+								</div>
+								
+								<div class='people'>
+									<a href="https://wiki.biligame.com/zzz/%E5%AE%89%E4%B8%9C">
+									<img src="https://patchwiki.biligame.com/images/zzz/0/03/kgb1gz40cw7ph91rvms2p66cpgtjqgu.png"  alt="安東" title="安東">
+									<div class='people-name' >安東</div>
+									</a>
+								</div>
+								
+								<div class='people'>
+									<a href="https://wiki.biligame.com/zzz/%E5%AE%89%E6%AF%94">
+									<img src="https://patchwiki.biligame.com/images/zzz/3/3b/k4wizldd6qy376mt36dxbv9nu5txju8.png"  alt="安比" title="安比">
+									<div class='people-name' >安比</div>
+									</a>
+								</div>
+							</div>
+
+							<div id="wind" class="detailed">
+								
+								
+							</div>
+							<div id="ether" class="detailed">
+								<div class='people'>
+									<a href="https://wiki.biligame.com/zzz/%E5%8D%97%E5%AE%AB%E7%BE%BD">
+									<img src="https://patchwiki.biligame.com/images/zzz/7/7f/4ix31r5tzjomirmnbk390lhgay3bygp.png"  alt="南宮羽" title="南宮羽">
+									<div class='people-name' >南宮羽</div>
+									</a>
+								</div>
+								
+								<div class='people'>
+									<a href="https://wiki.biligame.com/zzz/%E7%88%B1%E8%8A%AE">
+									<img src="https://patchwiki.biligame.com/images/zzz/thumb/8/88/phmdbhzd86zi9ixmru87sr0xawbknrp.png/800px-%E8%A7%92%E8%89%B2%E7%AB%8B%E7%BB%98-%E7%88%B1%E8%8A%AE-%E5%AE%98%E6%96%B9%E4%BB%8B%E7%BB%8D.png"  alt="愛芮" title="愛芮">
+									<div class='people-name' >愛芮</div>
+									</a>
+								</div>
+								
+								<div class='people'>
+									<a href="https://wiki.biligame.com/zzz/%E5%8D%A2%E8%A5%BF%E5%A8%85">
+									<img src="https://patchwiki.biligame.com/images/zzz/6/68/rrc32r9rjyzpb63erhxxqcthg5utazy.png"  alt="盧西婭" title="盧西婭">
+									<div class='people-name' >盧西婭</div>
+									</a>
+								</div>
+								
+								<div class='people'>
+									<a href="https://wiki.biligame.com/zzz/%E4%BB%AA%E7%8E%84">
+									<img src="https://patchwiki.biligame.com/images/zzz/4/49/4760u422mdwftuo7zxp04xsg61f04r5.png"  alt="儀玄" title="儀玄">
+									<div class='people-name' >儀玄</div>
+									</a>
+								</div>
+								
+								<div class='people'>
+									<a href="https://wiki.biligame.com/zzz/%E8%96%87%E8%96%87%E5%AE%89">
+									<img src="https://patchwiki.biligame.com/images/zzz/2/2c/414e3jmx74k8yh55fzb3bkoi0kzxzlq.png"  alt="薇薇安" title="薇薇安">
+									<div class='people-name' >薇薇安</div>
+									</a>
+								</div>
+								
+								<div class='people'>
+									<a href="https://wiki.biligame.com/zzz/%E8%80%80%E5%98%89%E9%9F%B3">
+									<img src="https://patchwiki.biligame.com/images/zzz/0/08/1dauaj0n2ro8m5mqkzyqbd0xzptvf4c.png"  alt="耀嘉音" title="耀嘉音">
+									<div class='people-name' >耀嘉音</div>
+									</a>
+								</div>
+								
+								<div class='people'>
+									<a href="https://wiki.biligame.com/zzz/%E6%9C%B1%E9%B8%A2">
+									<img src="https://patchwiki.biligame.com/images/zzz/0/08/2o5tvh8qlmiww214452ns7ftzc8nv31.png"  alt="朱鳶" title="朱鳶">
+									<div class='people-name' >朱鳶</div>
+									</a>
+								</div>
+								
+							</div>
+							<div id="physics" class="detailed">
+				
+								<div class='people'>
+									<a href="https://wiki.biligame.com/zzz/%E5%8D%83%E5%A4%8F">
+									<img src="https://patchwiki.biligame.com/images/zzz/9/97/nu41dabcu4ml3nj4fs30ilfhw5fwdfi.png"  alt="千夏" title="千夏">
+									<div class='people-name' >千夏</div>
+									</a>
+								</div>
+								
+								<div class='people'>
+									<a href="https://wiki.biligame.com/zzz/%E5%8F%B6%E7%9E%AC%E5%85%89">
+									<img src="https://patchwiki.biligame.com/images/zzz/3/33/3yfhv59wqxqohon7qwng5pju4qa3nyh.png"  alt="葉瞬光" title="葉瞬光">
+									<div class='people-name' >葉瞬光</div>
+									</a>
+								</div>
+								
+								<div class='people'>
+									<a href="https://wiki.biligame.com/zzz/%E7%90%89%E9%9F%B3">
+									<img src="https://patchwiki.biligame.com/images/zzz/8/84/dmupgsrh8c1vpzhm99b6n2ycoj9vmga.png"  alt="琉音" title="琉音">
+									<div class='people-name' >琉音</div>
+									</a>
+								</div>
+								
+								<div class='people'>
+									<a href="https://wiki.biligame.com/zzz/%E7%88%B1%E4%B8%BD%E4%B8%9D">
+									<img src="https://patchwiki.biligame.com/images/zzz/b/b8/1ugt7kchwoc6vg8tptl7ze0dpkt8hfh.png"  alt="愛麗絲" title="愛麗絲">
+									<div class='people-name' >愛麗絲</div>
+									</a>
+								</div>
+								
+								<div class='people'>
+									<a href="https://wiki.biligame.com/zzz/%E6%9F%9A%E5%8F%B6">
+									<img src="https://patchwiki.biligame.com/images/zzz/thumb/5/5b/l1boyulyxnlpp73lur2jki4ju6q1jkx.png/800px-%E8%A7%92%E8%89%B2%E7%AB%8B%E7%BB%98-%E6%9F%9A%E5%8F%B6-%E5%AE%98%E6%96%B9%E4%BB%8B%E7%BB%8D.png"  alt="柚葉" title="柚葉">
+									<div class='people-name' >柚葉</div>
+									</a>
+								</div>
+								
+								<div class='people'>
+									<a href="https://wiki.biligame.com/zzz/%E5%87%AF%E6%92%92">
+									<img src="https://patchwiki.biligame.com/images/zzz/c/ca/q59wlxr61hewkv8m1ee4n6z04kl3m4d.png"  alt="凱薩" title="凱薩">
+									<div class='people-name' >凱薩</div>
+									</a>
+								</div>
+								
+								<div class='people'>
+									<a href="https://wiki.biligame.com/zzz/%E7%AE%80">
+									<img src="https://patchwiki.biligame.com/images/zzz/b/b1/qbwnuy6znkpmcwm650qa990v4eampmt.png"  alt="簡" title="簡">
+									<div class='people-name' >簡</div>
+									</a>
+								</div>
+								
+								<div class='people'>
+									<a href="https://wiki.biligame.com/zzz/%E7%8C%AB%E5%8F%88">
+									<img src="https://patchwiki.biligame.com/images/zzz/d/de/olhtnngbcdr91qnz6ch8zwqak03f06w.png"  alt="貓又" title="貓又">
+									<div class='people-name' >貓又</div>
+									</a>
+								</div>
+								
+								<div class='people'>
+									<a href="https://wiki.biligame.com/zzz/%E6%BD%98%E5%BC%95%E5%A3%B6">
+									<img src="https://patchwiki.biligame.com/images/zzz/1/14/8xlcce2uqgnqrcyuhg6ymtxf2ptik76.png"  alt="潘引壺" title="潘引壺">
+									<div class='people-name' >潘引壺</div>
+									</a>
+								</div>
+								
+								<div class='people'>
+									<a href="https://wiki.biligame.com/zzz/%E6%B3%A2%E5%8F%AF%E5%A8%9C">
+									<img src="https://patchwiki.biligame.com/images/zzz/9/93/j9zhgcjxzo21qaax1lisfuwim2vl9iw.png"  alt="波可娜" title="波可娜">
+									<div class='people-name' >波可娜</div>
+									</a>
+								</div>
+								
+								<div class='people'>
+									<a href="https://wiki.biligame.com/zzz/%E5%8F%AF%E7%90%B3">
+									<img src="https://patchwiki.biligame.com/images/zzz/2/2f/771weh4j6k5we5dt69csfem3r659b3s.png"  alt="可琳" title="可琳">
+									<div class='people-name' >可琳</div>
+									</a>
+								</div>
+								
+								<div class='people'>
+									<a href="https://wiki.biligame.com/zzz/%E6%AF%94%E5%88%A9">
+									<img src="https://patchwiki.biligame.com/images/zzz/b/b7/qolx7ivh1shl62v2ks3u171c71avdlx.png"  alt="比利" title="比利">
+									<div class='people-name' >比利</div>
+									</a>
+								</div>
+								
+								<div class='people'>
+									<a href="https://wiki.biligame.com/zzz/%E6%B4%BE%E6%B4%BE">
+									<img src="https://patchwiki.biligame.com/images/zzz/3/30/m22hkdno3hyogya45hrzhf2l4h6mmci.png"  alt="派派" title="派派">
+									<div class='people-name' >派派</div>
+									</a>
+								</div>
+							</div>
+							<div id="frost" class="detailed">
+								<div class='people'>
+									<a href="https://wiki.biligame.com/zzz/%E9%9B%85">
+									<img src="https://patchwiki.biligame.com/images/zzz/f/f1/qhhn9vgfo8aibapl1rz1c5ng6toptup.png"  alt="星見雅" title="星見雅">
+									<div class='people-name' >星見雅</div>
+									</a>
+								</div>
+										
+							</div>
+							<div id="xuanmo" class="detailed">
+								
+								<div class='people'>
+									<a href=https://wiki.biligame.com/zzz/%E4%BB%AA%E7%8E%84"">
+									<img src="https://patchwiki.biligame.com/images/zzz/4/49/4760u422mdwftuo7zxp04xsg61f04r5.png"  alt="儀玄" title="儀玄">
+									<div class='people-name' >儀玄</div>
+									</a>
+								</div>
+									
+									
+							</div>
+							<div id="rin" class="detailed">
+								
+								<div class='people'>
+									<a href="https://wiki.biligame.com/zzz/%E5%8F%B6%E7%9E%AC%E5%85%89">
+									<img src="https://patchwiki.biligame.com/images/zzz/3/33/3yfhv59wqxqohon7qwng5pju4qa3nyh.png"  alt="葉瞬光" title="葉瞬光">
+									<div class='people-name' >葉瞬光</div>
+									</a>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="separation" style="flex: 0.5;" >
+				
+				
+				<div class='column'>
+					<div class='column-title' style="color:	#EAC100">本期活動&UP</div>
+					<div class='column-content'>
+						現在是
+						<div id="current-date">2026 年 01 月 01 日</div>
+						<div id="current-time">00:00:00</div>
+						<div class='btn'><a href="https://wiki.biligame.com/zzz/%E9%A6%96%E9%A1%B5" target="_blank">詳細資訊</a></div>
+					</div>
+				</div>
+				
+				<div class='column'>
+					<div class='column-title'>關於</div>
+					<div class='column-content'>
+						<div class="hotspot-item">
+							<img src='https://patchwiki.biligame.com/images/zzz/7/72/lgv0pbhvosj9yei8nfxkcqa8hrqk9jb.png' width='100'>
+							絕區零
+						</div>
+						<div class='btn'><a href='https://zenless.hoyoverse.com/zh-tw/main' target="_blank">官網</a></div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- 主體 end -->
+	
+<script>
+    //按鈕
+    // 抓取網頁上所有的頁籤按鈕
+    const buttons = document.querySelectorAll('.tab-buttons .btn');
+    // 抓取網頁上所有的內容區塊
+    const contents = document.querySelectorAll('.tab-contents .detailed');
+
+    // 幫每一個按鈕加上「點擊監聽器」
+    buttons.forEach(button => {
+        button.addEventListener('click', () => {
+            
+            // 關鍵修改：先檢查目前點擊的按鈕是不是本來就已經是亮著的 (.active)
+            const isAlreadyActive = button.classList.contains('active');
+
+            if (isAlreadyActive) {
+                // 【情況一：點擊已亮起的按鈕 -> 取消過濾，回到預設全顯】
+                button.classList.remove('active');
+                
+                // 讓所有內容區塊都加上 active（通通顯示出來）
+                contents.forEach(content => content.classList.add('active'));
+            } else {
+                // 【情況二：點擊其他按鈕 -> 正常過濾】
+                
+                // A. 清除所有按鈕的 active 狀態
+                buttons.forEach(btn => btn.classList.remove('active'));
+                // B. 先清除所有內容的 active 狀態（全部藏起來）
+                contents.forEach(content => content.classList.remove('active'));
+
+                // C. 幫當前被點擊的按鈕加上 active
+                button.classList.add('active');
+
+                // D. 找出這個按鈕對應的內容 id，並讓它顯示
+                const targetId = button.getAttribute('data-target');
+                document.getElementById(targetId).classList.add('active');
+            }
+        });
+    });
+	
+	// === 即時日期時間邏輯 ===
+    function clockInsideWeb() {
+        const dateElement = document.getElementById('current-date');
+        const timeElement = document.getElementById('current-time');
+        
+        if (!dateElement || !timeElement) return; // 防呆
+
+        const now = new Date();
+
+        // 1. 抓取年月日的資料
+        const year = now.getFullYear();
+        // 月份從 0 開始算，所以要 +1。padStart(2, '0') 可以確保數字不滿兩位數時自動補 0 (例如 5月 變成 05月)
+        const month = String(now.getMonth() + 1).padStart(2, '0');
+        const date = String(now.getDate()).padStart(2, '0');
+        
+        // 取得星期（把數字換成中文）
+        const weekArray = ['日', '一', '二', '三', '四', '五', '六'];
+        const day = weekArray[now.getDay()];
+
+        // 2. 抓取時分秒的資料
+        const hours = String(now.getHours()).padStart(2, '0');
+        const minutes = String(now.getMinutes()).padStart(2, '0');
+        const seconds = String(now.getSeconds()).padStart(2, '0');
+
+        // 3. 把組裝好的文字丟回網頁上
+        dateElement.innerText = `${year} 年 ${month} 月 ${date} 日 (星期${day})`;
+        timeElement.innerText = `${hours}:${minutes}:${seconds}`;
+    }
+
+    // 網頁一打開，立刻執行一次，才不會畫面空白一秒
+    clockInsideWeb();
+
+    // 關鍵設定：設定每 1000 毫秒（也就是 1 秒）讓瀏覽器自動重新執行一次這個函式
+    setInterval(clockInsideWeb, 1000);
+    //按鈕end
+    
+    //時間
+</script>
+</body>
+</html>
